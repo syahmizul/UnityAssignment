@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.2'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 22
+        targetSdkVersion 30
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+        versionCode 1
+        versionName '1.0.2'
+        consumerProguardFiles 'proguard-unity.txt'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    aaptOptions {
+        noCompress = ['.unity3d', '.ress', '.resource', '.obb', '.bundle', '.unityexp'] + unityStreamingAssets.tokenize(', ')
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+
+    packagingOptions {
+        doNotStrip '*/armeabi-v7a/*.so'
+    }
+}
+
+
+    android.sourceSets.main.java.srcDirs += [
+        'C:/Users/syahm/Assignment/Packages/com.unity.mobile.notifications/Runtime/Android/Plugins/com/unity/androidnotifications/UnityNotificationManagerOreo.java',
+        'C:/Users/syahm/Assignment/Packages/com.unity.mobile.notifications/Runtime/Android/Plugins/com/unity/androidnotifications/NotificationCallback.java',
+        'C:/Users/syahm/Assignment/Packages/com.unity.mobile.notifications/Runtime/Android/Plugins/com/unity/androidnotifications/UnityNotificationManager.java',
+        'C:/Users/syahm/Assignment/Packages/com.unity.mobile.notifications/Runtime/Android/Plugins/com/unity/androidnotifications/UnityNotificationUtilities.java',
+        'C:/Users/syahm/Assignment/Packages/com.unity.mobile.notifications/Runtime/Android/Plugins/com/unity/androidnotifications/UnityNotificationRestartOnBootReceiver.java',
+        'C:/Users/syahm/Assignment/Packages/com.unity.adaptiveperformance.samsung.android/Runtime/Plugins/Android/com/unity3d/adaptiveperformance/samsung/GameLoadBooster.java',
+        'C:/Users/syahm/Assignment/Packages/com.unity.mobile.notifications/Runtime/Android/Plugins/com/unity/androidnotifications/NotificationChannelWrapper.java'
+    ]
+
